@@ -1,25 +1,7 @@
-# simplemes-core
+# eframew
 
-[![Build Status](https://github.com/simplemes/simplemes-core/workflows/BuildAndTestAll/badge.svg)](https://github.com/simplemes/simplemes-core/actions)
+**This framework is a fork of the simplemes-core code-base using the Webix GUI library.**
 
-
-**This framework is in a pre-release state.**
-
-See the [documentation](https://simplemes.github.io/simplemes-core/) and
-[demo server](https://simplemes-demo.herokuapp.com/) (login admin/admin).
-
-SimpleMES (Manufacturing Execution System) Core Modules.  The supported modules include:
-
-* [Enterprise Framework Module](eframe)
-* [MES Core Module](mes-core)
-* [MES Assembly Module](mes-assy)
-* [Webix Assets](webix)
-
-# Design Decisions
-
-Key design/architecture decisions are briefly documented in the various modules. 
-
-* [Enterprise Framework Decisions](eframe/src/main/docs/adr/DesignDecisions.md)
 
 # Build Instructions
 
