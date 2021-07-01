@@ -97,11 +97,15 @@ task bintrayUploadAll {
   }
 }
 
+/*
 task distZip {
   dependsOn gradle.includedBuild('mes').task(':distZip')
 }
+*/
 
+/*
 task shadowJar {
   dependsOn gradle.includedBuild('mes').task(':shadowJar')
 }
+*/
 
