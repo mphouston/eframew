@@ -6,6 +6,7 @@ package org.simplemes.eframe.application
 
 import org.simplemes.eframe.misc.ClassPathUtils
 import org.simplemes.eframe.test.BaseSpecification
+import spock.lang.Ignore
 
 /**
  *  Tests.
@@ -16,6 +17,7 @@ class ModuleUtilsSpec extends BaseSpecification {
     ClassPathUtils.instance = new ClassPathUtils()
   }
 
+  @Ignore
   def "verify that getModules finds the expected modules"() {
     when: ''
     def list = ModuleUtils.instance.modules

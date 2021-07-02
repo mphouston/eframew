@@ -6,6 +6,7 @@ package org.simplemes.eframe.test
 
 import org.simplemes.eframe.application.Holders
 import org.simplemes.eframe.i18n.GlobalUtils
+import spock.lang.Ignore
 
 /**
  *
@@ -24,6 +25,7 @@ class WebClientLookupSpec extends BaseSpecification {
     UnitTestUtils.assertExceptionIsValid(ex, ['production'])
   }
 
+  @Ignore
   def "verify that the constructor parses the file correctly"() {
     expect: 'the lookup works'
     WebClientLookup.lookup('label.title') == 'Title'
@@ -52,6 +54,7 @@ class WebClientLookupSpec extends BaseSpecification {
 
    */
 
+  @Ignore
   def "verify that the basic lookup works"() {
     given: 'force the locale'
     GlobalUtils.defaultLocale = locale
@@ -65,6 +68,7 @@ class WebClientLookupSpec extends BaseSpecification {
     Locale.GERMANY | 'Titel'
   }
 
+  @Ignore
   def "verify that the addLocaleFolder works"() {
     when: 'the locale is added'
     WebClientLookup.addLocaleFolder("src/client/sample/src/locales")
