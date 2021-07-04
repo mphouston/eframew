@@ -46,7 +46,7 @@ abstract class BasicStatus implements EncodedTypeInterface, ChoiceListInterface,
   /**
    * True if this choice is the default choice in the list.
    */
-  Boolean defaultChoice = false
+  boolean defaultChoice = false
 
   /**
    * Returns the instance for the given DB ID.

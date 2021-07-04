@@ -36,7 +36,7 @@ class SimpleChoiceListItem implements ChoiceListItemInterface {
   /**
    * True if this choice is the default choice in the list.
    */
-  Boolean defaultChoice = false
+  boolean defaultChoice = false
 
   /**
    * Returns true if this choice is the default choice in the list.

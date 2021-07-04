@@ -7,14 +7,13 @@ package org.simplemes.eframe.security.domain
 import io.micronaut.data.jdbc.annotation.JdbcRepository
 import io.micronaut.data.model.query.builder.sql.Dialect
 import io.micronaut.data.repository.CrudRepository
-import org.simplemes.eframe.domain.BaseRepository
 
 /**
  * The Role repository base interface.  Provides the methods for the repo.
  */
 @SuppressWarnings("unused")
 @JdbcRepository(dialect = Dialect.POSTGRES)
-interface RoleRepository extends BaseRepository, CrudRepository<Role, UUID> {
+interface RoleRepository extends CrudRepository<Role, UUID> {
 
   Optional<Role> findByAuthority(String authority)
 

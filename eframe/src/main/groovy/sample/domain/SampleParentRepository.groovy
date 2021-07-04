@@ -8,14 +8,13 @@ import io.micronaut.data.jdbc.annotation.JdbcRepository
 import io.micronaut.data.model.Pageable
 import io.micronaut.data.model.query.builder.sql.Dialect
 import io.micronaut.data.repository.CrudRepository
-import org.simplemes.eframe.domain.BaseRepository
 
 /**
  * The SampleParent repository base interface.  Provides the methods for the repo.
  */
 @SuppressWarnings('unused')
 @JdbcRepository(dialect = Dialect.POSTGRES)
-interface SampleParentRepository extends BaseRepository, CrudRepository<SampleParent, UUID> {
+interface SampleParentRepository extends CrudRepository<SampleParent, UUID> {
   Optional<SampleParent> findByUuid(UUID uuid)
 
   Optional<SampleParent> findByName(String name)

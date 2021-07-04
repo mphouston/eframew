@@ -4,14 +4,12 @@
 
 package org.simplemes.eframe.web.ui.webix.freemarker
 
-import org.simplemes.eframe.data.FieldDefinitions
+
 import org.simplemes.eframe.misc.TextUtils
-import org.simplemes.eframe.reports.ReportFieldDefinition
 import org.simplemes.eframe.test.BaseMarkerSpecification
 import org.simplemes.eframe.test.JavascriptTestUtils
 import org.simplemes.eframe.test.MockDomainUtils
 import org.simplemes.eframe.test.MockFieldDefinitions
-import org.simplemes.eframe.web.view.FreemarkerWrapper
 import sample.controller.SampleParentController
 import sample.domain.SampleParent
 
@@ -192,29 +190,6 @@ class FormMarkerSpec extends BaseMarkerSpecification {
     def elementsText = JavascriptTestUtils.extractBlock(holderLine, 'elements: [')
     JavascriptTestUtils.extractProperty(elementsText, 'view').contains('template')
     JavascriptTestUtils.extractProperty(elementsText, 'id').contains('ButtonsContentX')
-  }
-
-  def "verify that the form marker supports the fieldDefinitions option"() {
-    given: 'a set of field definitions'
-    def fieldDefinitions = new FieldDefinitions()
-    fieldDefinitions << new ReportFieldDefinition(name: 'abc', sequence: 20)
-    fieldDefinitions << new ReportFieldDefinition(name: 'xyz', sequence: 10)
-
-    when: 'the marker is built'
-    def src = """
-      <@efForm fieldDefinitions="reportFields">
-        // Some content
-      </@efForm>
-    """
-    def page = execute(source: src, dataModel: [reportFields      : new FreemarkerWrapper(fieldDefinitions),
-                                                reportFilterValues: [:]])
-
-    then: 'the javascript is legal'
-    checkPage(page)
-
-    and: 'the content contains the specified fields'
-    page.contains('abc')
-    page.contains('xyz')
   }
 
 }

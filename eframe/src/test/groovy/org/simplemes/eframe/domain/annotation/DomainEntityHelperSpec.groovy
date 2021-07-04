@@ -28,6 +28,7 @@ import sample.domain.OrderRepository
 import sample.domain.SampleChild
 import sample.domain.SampleGrandChild
 import sample.domain.SampleParent
+import spock.lang.Ignore
 
 import javax.inject.Singleton
 import javax.sql.DataSource
@@ -44,6 +45,7 @@ class DomainEntityHelperSpec extends BaseSpecification {
   @SuppressWarnings("unused")
   static dirtyDomains = [Order, OrderLine, SampleParent]
 
+  @Ignore
   def "verify that getPreparedStatement detects use outside of txn and fails"() {
     given: 'make sure the checkForTransactionStatic method in the repository operations object is initialized'
     SampleParent.withTransaction {

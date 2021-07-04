@@ -9,13 +9,12 @@ import io.micronaut.data.jdbc.annotation.JdbcRepository
 import io.micronaut.data.model.Pageable
 import io.micronaut.data.model.query.builder.sql.Dialect
 import io.micronaut.data.repository.CrudRepository
-import org.simplemes.eframe.domain.BaseRepository
 
 /**
  * The Order repository base interface.  Provides the methods for the repo.
  */
 @JdbcRepository(dialect = Dialect.POSTGRES)
-interface OrderRepository extends BaseRepository, CrudRepository<Order, UUID> {
+interface OrderRepository extends CrudRepository<Order, UUID> {
 
   Optional<Order> findByOrder(String order)
 
@@ -26,7 +25,6 @@ interface OrderRepository extends BaseRepository, CrudRepository<Order, UUID> {
   List<Order> list(Pageable pageable)
   List<Order> list()
 
-  @Join(value = "orderLines", type = Join.Type.LEFT_FETCH, alias = "ol_")
   Order get(UUID uuid)
 
 

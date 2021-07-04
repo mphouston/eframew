@@ -9,16 +9,15 @@ import io.micronaut.data.jdbc.annotation.JdbcRepository
 import io.micronaut.data.model.Pageable
 import io.micronaut.data.model.query.builder.sql.Dialect
 import io.micronaut.data.repository.CrudRepository
-import org.simplemes.eframe.domain.BaseRepository
 
 /**
  * The User repository base interface.  Provides the methods for the repo.
  */
 @SuppressWarnings("unused")
 @JdbcRepository(dialect = Dialect.POSTGRES)
-interface UserRepository extends BaseRepository, CrudRepository<User, UUID> {
+interface UserRepository extends CrudRepository<User, UUID> {
 
-  @Join(value = "userRoles", type = Join.Type.LEFT_FETCH)
+  //@Join(value = "userRoles", type = Join.Type.LEFT_FETCH)
   Optional<User> findByUserName(String userName)
 
   Optional<User> findById(UUID uuid)
@@ -30,7 +29,7 @@ interface UserRepository extends BaseRepository, CrudRepository<User, UUID> {
   List<User> list(Pageable pageable)
   List<User> list()
 
-  @Join(value = "userRoles", type = Join.Type.LEFT_FETCH)
+  //@Join(value = "userRoles", type = Join.Type.LEFT_FETCH)
   User get(UUID uuid)
 
 

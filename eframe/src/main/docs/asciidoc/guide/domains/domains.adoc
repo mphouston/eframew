@@ -137,7 +137,7 @@ class Order {
   @Id @AutoPopulated UUID uuid  // <.>
 }
 
-interface OrderRepository extends BaseRepository, CrudRepository<Order, UUID> {
+interface OrderRepository extends CrudRepository<Order, UUID> {
   Optional<Order> findByOrder(String order)  // <.>
   Optional<Order> findByUuid(UUID uuid)
   List<Order> list()
@@ -410,7 +410,6 @@ to use the repository directly.
 
 Base interfaces include:
 
-* BaseRepository
 * CrudRepository<__Domain__, UUID>
 
 NOTE: Do not call the repository `save()`, `update()` or `delete()` methods directly.  There
@@ -430,7 +429,7 @@ Some of the standard methods expected are:
 [source,groovy]
 .Example - Methods for most top-level domain repositories
 ----
-interface OrderRepository extends BaseRepository, CrudRepository<Order, UUID> {
+interface OrderRepository extends CrudRepository<Order, UUID> {
   Optional<Order> findByUuid(UUID uuid)  // <.>
 
   List<Order> list(Pageable pageable) // <.>
@@ -585,7 +584,7 @@ You must handle this in your application code. For example:
 [source,groovy]
 .Example - Pessimistic Locking
 ----
-interface LSNSequenceRepository extends BaseRepository, CrudRepository<LSNSequence, UUID> {
+interface LSNSequenceRepository extends CrudRepository<LSNSequence, UUID> {
   @Query("select * from lsn_sequence o where o.uuid = :uuid for update ")  // <.>
   Optional<LSNSequence> findByUuidWithLock(UUID uuid)  // <.>
 }
@@ -710,7 +709,7 @@ Non-nullable references can use the LEFT join logic:
 [source,groovy]
 .Example - Non-nullable Foreign Reference
 ----
-interface OrderRepository extends BaseRepository, CrudRepository<Order, UUID> {
+interface OrderRepository extends CrudRepository<Order, UUID> {
   @Join(value = "product", type = Join.Type.LEFT)  <.>
   Optional<Order> findByUuid(UUID uuid)
 }
@@ -754,7 +753,7 @@ class Child {
   Parent parent  <.>
 }
 
-interface ChildRepository extends BaseRepository, CrudRepository<Child, UUID> {
+interface ChildRepository extends CrudRepository<Child, UUID> {
   List<Child> findAllByParent(Parent parent) <.>
   Optional<Child> findById(UUID uuid)
   List<Child> list()
@@ -807,7 +806,7 @@ class User {
   List<Role> userRoles // <.>
 }
 
-interface UserRepository extends BaseRepository, CrudRepository<User, UUID> {
+interface UserRepository extends CrudRepository<User, UUID> {
   @Join(value = "userRoles", type = Join.Type.LEFT_FETCH)
   Optional<User> findByUserName(String userName)
 }
@@ -831,7 +830,7 @@ class User {
   List<Role> userRoles // <.>
 }
 
-interface UserRepository extends BaseRepository, CrudRepository<User, UUID> {
+interface UserRepository extends CrudRepository<User, UUID> {
   Optional<User> findByUserName(String userName)
 }
 ----
