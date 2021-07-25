@@ -162,7 +162,7 @@ class SimpleFieldDefinition implements FieldDefinitionInterface {
    * Sets the default values (e.g. for the label), if none are provided.
    */
   void setDefaultValues() {
-    label = label ?: "label.${name}"
+    label = label ?: "${name}.label"
   }
 
   /**

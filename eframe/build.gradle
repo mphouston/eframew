@@ -9,7 +9,7 @@ buildscript {
     jcenter()
   }
 }
-
+   
 plugins {
   id 'org.asciidoctor.jvm.convert' version '3.1.0'
   id "io.spring.dependency-management" version "1.0.6.RELEASE"
@@ -18,9 +18,11 @@ plugins {
   id "com.bertramlabs.asset-pipeline" version "3.0.10"
   id "org.owasp.dependencycheck" version "4.0.0.1"
   //id "com.github.johnrengelman.shadow" version "6.1.0"
-  id "io.micronaut.application" version '1.0.5'
+  id("groovy")
+  id("io.micronaut.application") version "1.5.3"
 }
 
+group "org.simplemes"
 version "0.6"
 
 repositories {
@@ -38,12 +40,84 @@ micronaut {
   testRuntime "spock2"
 }
 
-// Common tasks from the overall common.gradle file provides: version, bintrayUpload, maven artifact creation.
-apply from: "../gradle/common.gradle"
+ext {
+  // Need to specify this version here since it has non-numeric value.  The gradle.properties file can't seem to handle that.
+  //noinspection GroovyAssignabilityCheck
+  springSecurityCryptoVersion='5.3.2.RELEASE'
+}
 
 dependencies {
-  implementation ("org.simplemes:webix:$webixVersion")
-  // Most dependencies come from the ../gradle/common.gradle file.
+  implementation ("org.simplemes:webix:$webixVersion") {transitive = false}
+
+  implementation "io.micronaut:micronaut-http-client"
+  implementation "io.micronaut:micronaut-http-server-netty"
+  implementation "io.micronaut.groovy:micronaut-runtime-groovy"
+  implementation "io.micronaut:micronaut-validation"
+  implementation "io.micronaut:micronaut-inject-groovy"
+  implementation "io.micronaut:micronaut-management"
+  implementation "io.micronaut.views:micronaut-views-freemarker"
+  implementation "org.freemarker:freemarker:$freemarkerVersion"
+  implementation "ch.qos.logback:logback-classic:$logbackVersion"
+
+  implementation "io.micronaut.security:micronaut-security-jwt"
+  implementation "org.codehaus.groovy:groovy-templates" // Added for Groovydoc and TextUtils.
+  implementation "org.codehaus.groovy:groovy-xml:$groovyVersion"
+  implementation "org.codehaus.groovy:groovy-dateutil"
+  implementation ( "com.bertramlabs.plugins:asset-pipeline-micronaut:$assetPipelineVersion") {
+    exclude group: "io.micronaut", module: "http-server-netty"
+  }
+  implementation ( "com.bertramlabs.plugins:asset-pipeline-core:$assetPipelineVersion")
+  implementation "org.springframework.security:spring-security-crypto:5.3.2.RELEASE"
+  implementation "commons-logging:commons-logging:1.2"
+
+  implementation "jakarta.persistence:jakarta.persistence-api:${jakartaJPAVersion}"
+  implementation "io.micronaut.data:micronaut-data-processor:$micronautDataVersion"
+  implementation "io.micronaut.data:micronaut-data-jdbc:$micronautDataVersion"
+  runtimeOnly 'io.micronaut.sql:micronaut-jdbc-hikari'
+  implementation("io.micronaut.flyway:micronaut-flyway")
+
+  // Needed for groovydoc tasks.
+  implementation ("com.github.javaparser:javaparser-core:3.15.17")
+
+  testImplementation "org.codehaus.groovy:groovy-json"
+  testImplementation "org.codehaus.groovy:groovy-test"
+  testImplementation "io.micronaut.test:micronaut-test-spock"
+
+  implementation( "org.spockframework:spock-core") {
+    exclude group: "org.codehaus.groovy", module: "groovy-all"
+  }
+  implementation("org.spockframework:spock-core") {
+    exclude group: "org.codehaus.groovy", module: "groovy-all"
+  }
+  implementation ("org.gebish:geb-spock:$gebVersion") {
+    exclude (group: "org.codehaus.groovy", module: "groovy-all")
+    transitive = true
+  }
+  testImplementation("org.gebish:geb-spock:$gebVersion") {
+    exclude (group: "org.codehaus.groovy", module: "groovy-all")
+    transitive = true
+  }
+  implementation "cglib:cglib-nodep:$cglibVersion"
+  implementation "org.objenesis:objenesis:$objenesisVersion"
+  implementation "net.bytebuddy:byte-buddy:$byteBuddyVersion"
+
+  implementation "org.seleniumhq.selenium:selenium-chrome-driver:$webDriversVersion"
+  implementation "org.seleniumhq.selenium:selenium-firefox-driver:$webDriversVersion"
+  implementation "org.seleniumhq.selenium:selenium-api:$webDriversVersion"
+  implementation ("org.seleniumhq.selenium:selenium-support:$webDriversVersion"){
+    exclude group:  "net.bytebuddy", module: "byte-buddy"  // Conflicts with Spock
+  }
+
+  implementation group: 'org.postgresql', name: 'postgresql', version: '42.2.14'
+
+  implementation "org.elasticsearch.client:elasticsearch-rest-client:$elasticSearchClient"
+
+  test {
+    useJUnitPlatform()  // Forces Junit5 for Spock in Gradle tests.
+    jvmArgs = ['-Dnashorn.args="--no-deprecation-warning"']  // Suppress Javascript engine deprecation warning
+    // Force STDOUT to echo in github server.
+    testLogging.showStandardStreams = true
+  }
 }
 
 mainClassName = "org.simplemes.eframe.application.Application"
@@ -66,4 +140,78 @@ jar {
 test {
   // Force STDOUT to echo in github server.
   testLogging.showStandardStreams = true
+}
+
+// Module publishing task setup.
+project.ext.pomConfig = {
+  licenses {
+    license {
+      name "GNU GPL 3.0"
+      url "http://www.webix.com/"
+      distribution "repo"
+    }
+  }
+  developers {
+    developer {
+      id "mphouston"
+      name "Mike Houston"
+      email "dev@simplemes.org"
+    }
+  }
+
+  scm {
+    url "https://github.com/simplemes/simplemes-core"
+  }
+}
+
+
+task sourcesJar(type: Jar, dependsOn: classes) {
+  classifier 'sources'
+  from sourceSets.main.allSource
+}
+
+task javadocJar(type: Jar, dependsOn: javadoc) {
+  classifier 'javadoc'
+  from groovydoc.destinationDir
+}
+
+artifacts {
+  archives sourcesJar
+  archives javadocJar
+}
+
+publishing {
+  publications {
+    mavenPublication(MavenPublication) {
+      from components.java
+      artifact sourcesJar {
+        classifier "sources"
+      }
+      artifact javadocJar {
+        classifier "javadoc"
+      }
+      groupId 'org.simplemes'
+      artifactId moduleName
+      version project.version
+      //println "artifacts = $artifacts"
+      //def allArtifact = artifacts.find { it.classifier=='all'}
+      //allArtifact.skip()
+      //println "allArtifact = $allArtifact"
+      //artifacts.remove(allArtifact)
+      artifacts.each() { println "  it = ${it.classifier}"}
+      pom.withXml {
+        def root = asNode()
+        // Work around for Duplicated tag: 'dependencyManagement' exception due to extra node for dependencyManagement.
+        // Must remove it manually.
+        def dpmNode = root.children().find {it.name()=='dependencyManagement'}
+        if (dpmNode) {
+          root.remove(dpmNode)
+        }
+        root.appendNode('description', moduleDescription)
+        root.appendNode('name', moduleDescription)
+        root.appendNode('url', 'https://github.com/simplemes/simplemes-core')
+        root.children().last() + pomConfig
+      }
+    }
+  }
 }

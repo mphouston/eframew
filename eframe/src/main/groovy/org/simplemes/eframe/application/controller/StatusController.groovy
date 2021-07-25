@@ -5,7 +5,6 @@
 package org.simplemes.eframe.application.controller
 
 import groovy.util.logging.Slf4j
-import io.micrometer.core.instrument.MeterRegistry
 import io.micronaut.http.MediaType
 import io.micronaut.http.annotation.Controller
 import io.micronaut.http.annotation.Get
@@ -50,10 +49,6 @@ class StatusController extends BaseController {
     def modelAndView = new StandardModelAndView("status/status", principal, this)
     Map model = (Map) modelAndView.model.get()
     model.modules = ModuleUtils.instance.getModules()
-
-    // See if the metrics are available
-    MeterRegistry registry = Holders.getBean(MeterRegistry)
-    model.checkRequests = (registry != null)
 
     log.debug('status(): {}', modelAndView)
     return modelAndView

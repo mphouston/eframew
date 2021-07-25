@@ -38,7 +38,6 @@ public class EFrameAssetPipelineService extends AssetPipelineService {
 
   public EFrameAssetPipelineService() {
     AssetPipelineConfigHolder.registerResolver(new FileSystemAssetResolver("application", "src/assets"));
-    System.out.println("exists: "+new File("src/assets").exists());
   }
 
   /**

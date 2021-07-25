@@ -14,7 +14,6 @@ import io.micronaut.http.MediaType
 import io.micronaut.http.annotation.Error
 import io.micronaut.security.authentication.AuthorizationException
 import io.micronaut.views.ViewsRenderer
-import net.sf.jasperreports.engine.JRRuntimeException
 import org.simplemes.eframe.application.Holders
 import org.simplemes.eframe.application.controller.GlobalErrorController
 import org.simplemes.eframe.exception.MessageHolder
@@ -128,11 +127,6 @@ abstract class BaseController {
         if (log.debugEnabled) {
           //noinspection GroovyUnusedCatchParameter
           try {
-            if (throwable instanceof JRRuntimeException) {
-              log.trace("Original exception is JRRuntimeException")
-              log.trace("Original messageKey ${throwable.messageKey}, ${throwable.args}")
-              log.trace("Original stack ${throwable.stackTrace}")
-            }
             log.debug("Exception caught while trying print nested exception. $exceptionClass.  ")
           } catch (Throwable ignored2) {
           }
