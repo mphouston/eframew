@@ -1290,7 +1290,7 @@ public class DomainEntityHelper {
    * This is used to make sure there is no connection leak since a
    */
   public void checkForTransaction() {
-    ASTUtils.invokeGroovyMethod("org.simplemes.eframe.domain.EFrameJdbcRepositoryOperations", "checkForTransactionStatic");
+    //ASTUtils.invokeGroovyMethod("org.simplemes.eframe.domain.EFrameJdbcRepositoryOperations", "checkForTransactionStatic");
   }
 
   /**

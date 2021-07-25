@@ -70,7 +70,6 @@ dependencies {
   implementation "io.micronaut.data:micronaut-data-jdbc:$micronautDataVersion"
   runtimeOnly 'io.micronaut.sql:micronaut-jdbc-hikari'
   implementation("io.micronaut.flyway:micronaut-flyway")
-  implementation("io.micronaut.micrometer:micronaut-micrometer-registry-prometheus")
 
   // Needed for groovydoc tasks.
   implementation ("com.github.javaparser:javaparser-core:3.15.17")
@@ -297,7 +296,12 @@ publishing {
       groupId 'org.simplemes'
       artifactId moduleName
       version project.version
-      //println "pom = $pom"
+      //println "artifacts = $artifacts"
+      //def allArtifact = artifacts.find { it.classifier=='all'}
+      //allArtifact.skip()
+      //println "allArtifact = $allArtifact"
+      //artifacts.remove(allArtifact)
+      artifacts.each() { println "  it = ${it.classifier}"}
       pom.withXml {
         def root = asNode()
         // Work around for Duplicated tag: 'dependencyManagement' exception due to extra node for dependencyManagement.

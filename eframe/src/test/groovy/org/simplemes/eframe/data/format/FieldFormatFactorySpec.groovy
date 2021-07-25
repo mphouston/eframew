@@ -73,7 +73,7 @@ class FieldFormatFactorySpec extends BaseSpecification {
       import org.simplemes.eframe.custom.domain.FlexType
       import io.micronaut.data.model.DataType
       import io.micronaut.data.annotation.MappedProperty
-      import javax.annotation.Nullable
+      import io.micronaut.core.annotation.Nullable
       import javax.persistence.ManyToOne
       
       @DomainEntity(repository=sample.domain.OrderRepository)

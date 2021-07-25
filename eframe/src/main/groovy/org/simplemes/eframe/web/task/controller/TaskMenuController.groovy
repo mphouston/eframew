@@ -14,7 +14,7 @@ import org.simplemes.eframe.application.Holders
 import org.simplemes.eframe.web.task.TaskMenuFolder
 import org.simplemes.eframe.web.task.TaskMenuHelper
 
-import javax.annotation.Nullable
+import io.micronaut.core.annotation.Nullable
 import java.security.Principal
 
 /*

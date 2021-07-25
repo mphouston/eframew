@@ -10,7 +10,7 @@ import io.micronaut.views.ViewsConfiguration
 import io.micronaut.views.freemarker.FreemarkerViewsRendererConfigurationProperties
 import org.simplemes.eframe.web.ui.webix.freemarker.FreemarkerDirectiveConfiguration
 
-import javax.annotation.Nullable
+import io.micronaut.core.annotation.Nullable
 
 /*
  * Copyright Michael Houston 2019. All rights reserved.
@@ -21,9 +21,12 @@ import javax.annotation.Nullable
 /**
  *
  */
+// TODO: Delete  Repalced by StartupHandler code.
+/*
 @Replaces(FreemarkerViewsRendererConfigurationProperties)
 @Requires(classes = Configuration)
 @ConfigurationProperties(PREFIX)
+*/
 class EFrameFreemarkerConfiguration extends FreemarkerViewsRendererConfigurationProperties {
 
   /**
@@ -39,7 +42,7 @@ class EFrameFreemarkerConfiguration extends FreemarkerViewsRendererConfiguration
     @Nullable ClassPathResourceLoader resourceLoader) {
     super(viewsConfiguration, version, resourceLoader)
     //println "EFrameFreemarkerConfiguration viewsConfiguration = $viewsConfiguration"
-    setSharedVariable("abc", 'xyz')
+    //setSharedVariable("abc", 'xyz')
     FreemarkerDirectiveConfiguration.addSharedVariables(this)
     //this.setClassLoaderForTemplateLoading(environment.getClassLoader(), "/" + viewsConfiguration.getFolder())
 

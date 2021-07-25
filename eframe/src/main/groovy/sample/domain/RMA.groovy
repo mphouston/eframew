@@ -20,7 +20,7 @@ import org.simplemes.eframe.custom.domain.FlexType
 import org.simplemes.eframe.data.annotation.ExtensibleFieldHolder
 import org.simplemes.eframe.domain.annotation.DomainEntity
 
-import javax.annotation.Nullable
+import io.micronaut.core.annotation.Nullable
 import javax.persistence.ManyToOne
 
 /**

@@ -26,7 +26,7 @@ import org.simplemes.eframe.exception.MessageHolder
 import org.simplemes.eframe.exception.ValidationException
 import org.simplemes.eframe.security.SecurityUtils
 
-import javax.annotation.Nullable
+import io.micronaut.core.annotation.Nullable
 import java.security.Principal
 
 /**

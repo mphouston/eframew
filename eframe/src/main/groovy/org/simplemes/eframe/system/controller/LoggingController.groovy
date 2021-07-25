@@ -32,7 +32,7 @@ import org.simplemes.eframe.security.SecurityUtils
 import org.simplemes.eframe.service.ServiceUtils
 import org.simplemes.eframe.web.task.TaskMenuItem
 
-import javax.annotation.Nullable
+import io.micronaut.core.annotation.Nullable
 import javax.transaction.Transactional
 import java.security.Principal
 

@@ -19,6 +19,7 @@ import io.reactivex.Flowable;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.io.File;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.net.URL;
@@ -37,6 +38,7 @@ public class EFrameAssetPipelineService extends AssetPipelineService {
 
   public EFrameAssetPipelineService() {
     AssetPipelineConfigHolder.registerResolver(new FileSystemAssetResolver("application", "src/assets"));
+    System.out.println("exists: "+new File("src/assets").exists());
   }
 
   /**

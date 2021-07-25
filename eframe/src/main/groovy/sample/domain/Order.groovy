@@ -20,7 +20,7 @@ import org.simplemes.eframe.domain.annotation.DomainEntity
 import org.simplemes.eframe.system.BasicStatus
 import org.simplemes.eframe.system.EnabledStatus
 
-import javax.annotation.Nullable
+import io.micronaut.core.annotation.Nullable
 import javax.persistence.Column
 import javax.persistence.OneToMany
 

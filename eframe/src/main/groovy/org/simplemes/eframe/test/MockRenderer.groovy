@@ -6,7 +6,7 @@ import io.micronaut.views.ViewsRenderer
 import io.micronaut.views.freemarker.FreemarkerViewsRenderer
 
 import javax.annotation.Nonnull
-import javax.annotation.Nullable
+import io.micronaut.core.annotation.Nullable
 
 /*
  * Copyright Michael Houston 2018. All rights reserved.

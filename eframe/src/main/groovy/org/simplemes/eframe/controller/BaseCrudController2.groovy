@@ -33,7 +33,7 @@ import org.simplemes.eframe.search.service.SearchService
 import org.simplemes.eframe.security.SecurityUtils
 import org.simplemes.eframe.web.asset.WebClientAssetService
 
-import javax.annotation.Nullable
+import io.micronaut.core.annotation.Nullable
 import java.security.Principal
 
 /**

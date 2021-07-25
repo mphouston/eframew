@@ -11,7 +11,7 @@ import io.micronaut.views.ModelAndView
 import org.simplemes.eframe.controller.BaseController
 import org.simplemes.eframe.controller.StandardModelAndView
 
-import javax.annotation.Nullable
+import io.micronaut.core.annotation.Nullable
 import java.security.Principal
 
 /*

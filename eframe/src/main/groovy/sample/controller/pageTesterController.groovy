@@ -9,7 +9,7 @@ import io.micronaut.security.annotation.Secured
 import io.micronaut.security.rules.SecurityRule
 import org.simplemes.eframe.controller.StandardModelAndView
 
-import javax.annotation.Nullable
+import io.micronaut.core.annotation.Nullable
 import java.security.Principal
 
 /*

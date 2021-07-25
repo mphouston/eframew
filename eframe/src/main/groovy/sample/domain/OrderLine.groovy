@@ -13,7 +13,7 @@ import io.micronaut.data.annotation.MappedProperty
 import io.micronaut.data.model.DataType
 import org.simplemes.eframe.domain.annotation.DomainEntity
 
-import javax.annotation.Nullable
+import io.micronaut.core.annotation.Nullable
 import javax.persistence.ManyToOne
 
 /**

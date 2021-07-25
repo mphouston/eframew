@@ -17,7 +17,7 @@ plugins {
   id "com.jfrog.bintray" version "1.8.4"
   id "com.bertramlabs.asset-pipeline" version "3.0.10"
   id "org.owasp.dependencycheck" version "4.0.0.1"
-  id "com.github.johnrengelman.shadow" version "6.1.0"
+  //id "com.github.johnrengelman.shadow" version "6.1.0"
   id "io.micronaut.application" version '1.0.5'
 }
 

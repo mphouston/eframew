@@ -35,7 +35,7 @@ import org.simplemes.eframe.controller.ControllerUtils
 import org.simplemes.eframe.controller.StandardModelAndView
 import org.simplemes.eframe.security.service.RefreshTokenService
 
-import javax.annotation.Nullable
+import io.micronaut.core.annotation.Nullable
 import java.security.Principal
 
 /**

@@ -17,7 +17,7 @@ import org.simplemes.eframe.domain.annotation.DomainEntity
 import org.simplemes.eframe.domain.validate.ValidationError
 import org.simplemes.eframe.reports.ReportTimeIntervalEnum
 
-import javax.annotation.Nullable
+import io.micronaut.core.annotation.Nullable
 import javax.persistence.Column
 import javax.persistence.ManyToOne
 import javax.persistence.OneToMany

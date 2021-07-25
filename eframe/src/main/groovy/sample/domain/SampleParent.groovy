@@ -17,7 +17,7 @@ import io.micronaut.data.model.DataType
 import org.simplemes.eframe.data.annotation.ExtensibleFieldHolder
 import org.simplemes.eframe.domain.annotation.DomainEntity
 
-import javax.annotation.Nullable
+import io.micronaut.core.annotation.Nullable
 import javax.persistence.Column
 import javax.persistence.ManyToMany
 import javax.persistence.ManyToOne

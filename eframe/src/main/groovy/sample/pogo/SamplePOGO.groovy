@@ -13,7 +13,7 @@ import org.simplemes.eframe.data.annotation.ExtensibleFieldHolder
 import org.simplemes.eframe.date.DateOnly
 import org.simplemes.eframe.json.TypeableJSONInterface
 
-import javax.annotation.Nullable
+import io.micronaut.core.annotation.Nullable
 
 /**
  * A simple POGO for testing.  Has most support field types.

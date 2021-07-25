@@ -15,7 +15,7 @@ import org.simplemes.eframe.controller.BaseCrudRestController
 import org.simplemes.eframe.controller.StandardModelAndView
 import org.simplemes.eframe.dashboard.domain.DashboardConfig
 
-import javax.annotation.Nullable
+import io.micronaut.core.annotation.Nullable
 import java.security.Principal
 
 /**

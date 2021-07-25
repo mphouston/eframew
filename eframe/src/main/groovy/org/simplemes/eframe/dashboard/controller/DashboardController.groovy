@@ -19,7 +19,7 @@ import org.simplemes.eframe.dashboard.domain.DashboardConfig
 import org.simplemes.eframe.web.task.TaskMenuItem
 import org.simplemes.eframe.web.ui.webix.freemarker.DashboardMarker
 
-import javax.annotation.Nullable
+import io.micronaut.core.annotation.Nullable
 import java.security.Principal
 
 /**

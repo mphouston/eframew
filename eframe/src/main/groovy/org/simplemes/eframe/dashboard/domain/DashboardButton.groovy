@@ -15,7 +15,7 @@ import io.micronaut.data.model.DataType
 import org.simplemes.eframe.domain.annotation.DomainEntity
 import org.simplemes.eframe.misc.FieldSizes
 
-import javax.annotation.Nullable
+import io.micronaut.core.annotation.Nullable
 import javax.persistence.Column
 import javax.persistence.ManyToOne
 

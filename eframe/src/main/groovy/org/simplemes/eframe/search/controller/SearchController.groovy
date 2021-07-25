@@ -24,7 +24,7 @@ import org.simplemes.eframe.search.SearchStatus
 import org.simplemes.eframe.search.service.SearchService
 import org.simplemes.eframe.web.task.TaskMenuItem
 
-import javax.annotation.Nullable
+import io.micronaut.core.annotation.Nullable
 import javax.inject.Inject
 import java.security.Principal
 

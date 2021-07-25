@@ -24,7 +24,7 @@ import sample.pogo.FindComponentResponseDetail
 import sample.pogo.FindWorkResponse
 import sample.pogo.FindWorkResponseDetail
 
-import javax.annotation.Nullable
+import io.micronaut.core.annotation.Nullable
 import java.security.Principal
 
 /**

@@ -16,7 +16,7 @@ import org.simplemes.eframe.controller.StandardModelAndView
 import org.simplemes.eframe.security.domain.User
 import org.simplemes.eframe.system.DemoDataLoaderInterface
 
-import javax.annotation.Nullable
+import io.micronaut.core.annotation.Nullable
 import java.security.Principal
 
 /**

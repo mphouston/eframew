@@ -32,7 +32,7 @@ import org.simplemes.eframe.misc.ArgumentUtils
 import org.simplemes.eframe.misc.JavascriptUtils
 import org.simplemes.eframe.security.Roles
 
-import javax.annotation.Nullable
+import io.micronaut.core.annotation.Nullable
 import javax.inject.Inject
 import java.security.Principal
 

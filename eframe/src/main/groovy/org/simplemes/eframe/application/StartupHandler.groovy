@@ -15,11 +15,13 @@ import groovy.util.logging.Slf4j
 import io.micronaut.context.event.StartupEvent
 import io.micronaut.runtime.event.annotation.EventListener
 import io.micronaut.scheduling.annotation.Async
+import io.micronaut.views.freemarker.FreemarkerViewsRendererConfigurationProperties
 import org.simplemes.eframe.application.issues.WorkArounds
 import org.simplemes.eframe.date.EFrameDateFormat
 import org.simplemes.eframe.misc.TypeUtils
 import org.simplemes.eframe.search.PassAllJacksonFilter
 import org.simplemes.eframe.search.SearchEnginePoolExecutor
+import org.simplemes.eframe.web.ui.webix.freemarker.FreemarkerDirectiveConfiguration
 
 import javax.inject.Singleton
 
@@ -60,9 +62,14 @@ class StartupHandler {
 
     // Modify the Object mapper
     waitForApplicationContext()
-    // Need to wait since thie handler is running in a different thread than the app context startup.
+    // Need to wait since the handler is running in a different thread than the app context startup.
     def mapper = Holders.applicationContext.getBean(ObjectMapper)
     configureJacksonObjectMapper(mapper)
+
+    // Register our freemarker extensions
+    def config = Holders.applicationContext.getBean(FreemarkerViewsRendererConfigurationProperties)
+    FreemarkerDirectiveConfiguration.addSharedVariables(config)
+
 
     // Start Initial data load.
     if (!TypeUtils.isMock(Holders.applicationContext)) {

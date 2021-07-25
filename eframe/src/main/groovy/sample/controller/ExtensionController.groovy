@@ -11,7 +11,7 @@ import sample.StartRequest
 import sample.domain.Order
 import sample.service.WorkService
 
-import javax.annotation.Nullable
+import io.micronaut.core.annotation.Nullable
 
 /*
  * Copyright Michael Houston 2018. All rights reserved.

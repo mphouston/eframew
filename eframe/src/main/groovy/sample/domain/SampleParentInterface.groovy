@@ -4,7 +4,7 @@
 
 package sample.domain
 
-import javax.annotation.Nullable
+import io.micronaut.core.annotation.Nullable
 
 /**
  * Defines the fields used in a SampleParent object.  Used to simulate a child class.

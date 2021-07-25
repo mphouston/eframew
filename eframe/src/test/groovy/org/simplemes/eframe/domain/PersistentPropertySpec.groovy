@@ -65,7 +65,7 @@ class PersistentPropertySpec extends BaseSpecification {
       import io.micronaut.data.annotation.MappedProperty
       import io.micronaut.data.model.DataType
       import javax.persistence.Column
-      import javax.annotation.Nullable
+      import io.micronaut.core.annotation.Nullable
 
       @DomainEntity
       class TestClass {
@@ -110,7 +110,7 @@ class PersistentPropertySpec extends BaseSpecification {
       import org.simplemes.eframe.domain.annotation.DomainEntity
       import org.simplemes.eframe.domain.validate.ValidationError
       import javax.persistence.Column
-      import javax.annotation.Nullable
+      import io.micronaut.core.annotation.Nullable
 
       @DomainEntity
       class TestClass {

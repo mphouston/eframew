@@ -27,7 +27,7 @@ import org.simplemes.eframe.test.UnitTestRenderer
 import sample.StartRequest
 import sample.StartResponse
 
-import javax.annotation.Nullable
+import io.micronaut.core.annotation.Nullable
 import java.security.Principal
 
 /**

@@ -584,7 +584,7 @@ class DomainEntityHelperSpec extends BaseSpecification {
     def src = """
       import org.simplemes.eframe.domain.annotation.DomainEntity
       import org.simplemes.eframe.domain.validate.ValidationError
-      import javax.annotation.Nullable
+      import io.micronaut.core.annotation.Nullable
   
       @DomainEntity
       class TestClass {
@@ -729,7 +729,7 @@ class DomainEntityHelperSpec extends BaseSpecification {
     def src = """
       import org.simplemes.eframe.domain.annotation.DomainEntity
       import org.simplemes.eframe.domain.validate.ValidationError
-      import javax.annotation.Nullable
+      import io.micronaut.core.annotation.Nullable
   
       @DomainEntity
       class TestClass {
@@ -773,7 +773,7 @@ class DomainEntityHelperSpec extends BaseSpecification {
     def src = """
       import org.simplemes.eframe.domain.annotation.DomainEntity
       import org.simplemes.eframe.domain.validate.ValidationError
-      import javax.annotation.Nullable
+      import io.micronaut.core.annotation.Nullable
   
       @DomainEntity
       class TestClass {
@@ -823,7 +823,7 @@ class DomainEntityHelperSpec extends BaseSpecification {
     def src = """
       import org.simplemes.eframe.domain.annotation.DomainEntity
       import org.simplemes.eframe.domain.validate.ValidationError
-      import javax.annotation.Nullable
+      import io.micronaut.core.annotation.Nullable
   
       @DomainEntity
       class TestClass {

@@ -19,7 +19,7 @@ import org.simplemes.eframe.misc.FieldSizes
 import org.simplemes.eframe.misc.LogUtils
 import org.simplemes.eframe.preference.Preference
 
-import javax.annotation.Nullable
+import io.micronaut.core.annotation.Nullable
 import javax.persistence.Column
 
 /**

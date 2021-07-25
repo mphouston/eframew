@@ -40,7 +40,7 @@ class BaseCrudRestControllerSpec extends BaseAPISpecification {
       import org.simplemes.eframe.controller.BaseCrudRestController
       import groovy.util.logging.Slf4j
       import io.micronaut.http.HttpResponse
-      import javax.annotation.Nullable
+      import io.micronaut.core.annotation.Nullab
       import java.security.Principal
       import io.micronaut.security.annotation.Secured
 
@@ -57,7 +57,7 @@ class BaseCrudRestControllerSpec extends BaseAPISpecification {
       import org.simplemes.eframe.controller.BaseCrudRestController
       import groovy.util.logging.Slf4j
       import io.micronaut.http.HttpResponse
-      import javax.annotation.Nullable
+      import io.micronaut.core.annotation.Nullab
       import java.security.Principal
       import io.micronaut.security.annotation.Secured
 
@@ -74,7 +74,7 @@ class BaseCrudRestControllerSpec extends BaseAPISpecification {
       import org.simplemes.eframe.controller.BaseCrudRestController
       import groovy.util.logging.Slf4j
       import io.micronaut.http.HttpResponse
-      import javax.annotation.Nullable
+      import io.micronaut.core.annotation.Nullab
       import java.security.Principal
       import io.micronaut.security.annotation.Secured
 

@@ -18,7 +18,7 @@ import org.simplemes.eframe.domain.annotation.DomainEntity
 import org.simplemes.eframe.json.TypeableMapper
 import org.simplemes.eframe.misc.FieldSizes
 
-import javax.annotation.Nullable
+import io.micronaut.core.annotation.Nullable
 import javax.persistence.Column
 
 /**
