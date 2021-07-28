@@ -6,7 +6,6 @@ package org.simplemes.eframe.search
 
 import groovy.transform.ToString
 import groovy.util.logging.Slf4j
-import org.simplemes.eframe.archive.ArchiverFactory
 import org.simplemes.eframe.misc.ArgumentUtils
 import org.simplemes.eframe.misc.LogUtils
 
@@ -51,15 +50,6 @@ class SearchEngineRequestBulkArchiveIndex implements SearchEngineRequestInterfac
    */
   List getDomains() {
     def list = []
-    for (ref in archiveRefs) {
-      def archiver = ArchiverFactory.instance.archiver
-      def objects = archiver.unarchive(ref, false)
-      for (object in objects) {
-        if (SearchHelper.instance.isSearchable(object.getClass())) {
-          list << object
-        }
-      }
-    }
     return list
   }
 

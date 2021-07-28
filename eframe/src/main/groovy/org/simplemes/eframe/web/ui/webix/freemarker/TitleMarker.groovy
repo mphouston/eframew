@@ -6,7 +6,6 @@ package org.simplemes.eframe.web.ui.webix.freemarker
 
 
 import org.simplemes.eframe.application.Holders
-import org.simplemes.eframe.dashboard.domain.DashboardConfig
 import org.simplemes.eframe.i18n.GlobalUtils
 import org.simplemes.eframe.misc.TypeUtils
 
@@ -58,23 +57,6 @@ class TitleMarker extends BaseMarker {
       }
       def objectString = escape(TypeUtils.toShortString(domainObject))
       s = GlobalUtils.lookup("${type}.title", null, [objectString, domainLabel, appTitle] as Object[])
-    } else if (type == 'dashboard') {
-      def dashboardCategory = parameters.category
-      def dashboard = parameters.dashboard
-      if (!dashboardCategory && !dashboard) {
-        throw new MarkerException("Tag <@efTitle> for dashboard requires dcategory or dashboard value.", this)
-      }
-      def t = ''
-      DashboardConfig.withTransaction {
-        def dashboardConfig
-        if (dashboard) {
-          dashboardConfig = DashboardConfig.findByDashboard(dashboard)
-        } else {
-          dashboardConfig = DashboardConfig.findByCategoryAndDefaultConfig((String) dashboardCategory, true)
-        }
-        t = dashboardConfig?.title ?: dashboard ?: dashboardCategory
-      }
-      s = "$t - ${lookup('dashboard.label')} - $appTitle"
     }
 
     write(s)

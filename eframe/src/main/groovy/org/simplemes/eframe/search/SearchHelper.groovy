@@ -10,7 +10,6 @@ import groovy.util.logging.Slf4j
 import io.micronaut.data.model.Pageable
 import org.apache.http.HttpHost
 import org.simplemes.eframe.application.Holders
-import org.simplemes.eframe.archive.ArchiverFactory
 import org.simplemes.eframe.controller.ControllerUtils
 import org.simplemes.eframe.domain.DomainUtils
 import org.simplemes.eframe.domain.SQLUtils
